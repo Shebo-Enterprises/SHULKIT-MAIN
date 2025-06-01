@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShulKit - Your Complete Synagogue Software Solution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Light blue-gray background */
+            color: #334155; /* Darker text color */
+        }
+        /* Styles for the modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-xl */
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+        }
+        .modal-close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b; /* slate-500 */
+            transition: color 0.2s ease;
+        }
+        .modal-close-button:hover {
+            color: #1e293b; /* slate-900 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-indigo-700 rounded-lg p-2 hover:text-indigo-800 transition duration-300">ShulKit</a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#kiddushcalender" class="text-gray-600 hover:text-indigo-700 font-medium transition duration-300">KiddushCalender</a></li>
+                    <li><a href="#chabaderp" class="text-gray-600 hover:text-indigo-700 font-medium transition duration-300">ChabadERP</a></li>
+                    <li><a href="#kiddush-message-ideas" class="text-gray-600 hover:text-indigo-700 font-medium transition duration-300">Kiddush Ideas</a></li>
+                    <li><a href="#" id="openContactModal" class="text-gray-600 hover:text-indigo-700 font-medium transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white py-20 text-center rounded-b-3xl shadow-lg">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Streamline Your Synagogue Operations with <span class="block mt-2">ShulKit</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto opacity-90">
+                The comprehensive software bundle designed to empower synagogues with efficient management and community engagement.
+            </p>
+            <a href="#software-overview" class="bg-white text-indigo-700 font-bold py-3 px-8 rounded-full text-lg hover:bg-indigo-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                Explore the Bundle
+            </a>
+        </div>
+    </section>
+
+    <section id="software-overview" class="py-16 bg-white rounded-t-3xl mt-[-20px] relative z-10 shadow-inner">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Our Powerful Software Components</h2>
+
+            <div id="kiddushcalender" class="flex flex-col md:flex-row items-center bg-gray-50 rounded-xl shadow-md p-8 mb-12 transform transition duration-300 hover:scale-[1.01]">
+                <div class="md:w-full text-center md:text-left">
+                    <h3 class="text-3xl font-semibold text-indigo-700 mb-4">KiddushCalender</h3>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        Simplify the management of Kiddush sponsorships and events. KiddushCalender provides an intuitive platform for members to sponsor Kiddushim, view available dates, and manage dedications, ensuring seamless coordination for your synagogue's weekly gatherings.
+                    </p>
+                    <a href="https://kiddushware.netlify.app" target="_blank" rel="noopener noreferrer" class="inline-block bg-indigo-600 text-white font-bold py-3 px-6 rounded-full hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-md">
+                        Visit KiddushCalender
+                    </a>
+                </div>
+            </div>
+
+            <div id="chabaderp" class="flex flex-col md:flex-row-reverse items-center bg-gray-50 rounded-xl shadow-md p-8 transform transition duration-300 hover:scale-[1.01]">
+                <div class="md:w-full text-center md:text-right">
+                    <h3 class="text-3xl font-semibold text-indigo-700 mb-4">ChabadERP</h3>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        An all-in-one Enterprise Resource Planning solution tailored for Chabad centers. Manage membership, donations, events, accounting, and communications with ease, allowing you to focus on your mission and community growth.
+                    </p>
+                    <a href="https://chabaderp.netlify.app" target="_blank" rel="noopener noreferrer" class="inline-block bg-indigo-600 text-white font-bold py-3 px-6 rounded-full hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-md">
+                        Visit ChabadERP
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kiddush-message-ideas" class="py-16 bg-gradient-to-r from-purple-700 to-indigo-600 text-white text-center rounded-xl mx-auto max-w-4xl px-8 shadow-lg">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold mb-6">Generate Kiddush Message Ideas ✨</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+                Need inspiration for your Kiddush dedication? Let our AI suggest a heartfelt message!
+            </p>
+            <div class="bg-white p-8 rounded-xl shadow-lg text-gray-800">
+                <div class="mb-6 text-left">
+                    <label for="occasionInput" class="block text-gray-700 text-lg font-medium mb-2">Occasion for Kiddush:</label>
+                    <input type="text" id="occasionInput" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 text-lg" placeholder="e.g., In honor of a birthday, In memory of a loved one">
+                </div>
+                <button id="generateMessageBtn" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105 shadow-md">
+                    Generate Kiddush Message ✨
+                </button>
+                <div class="mt-8 text-left">
+                    <label for="generatedMessage" class="block text-gray-700 text-lg font-medium mb-2">Suggested Message:</label>
+                    <textarea id="generatedMessage" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-md bg-gray-100 text-gray-700 resize-y" placeholder="Your generated message will appear here..." readonly></textarea>
+                    <p id="loadingIndicator" class="text-indigo-600 mt-2 hidden">Generating message...</p>
+                    <p id="errorIndicator" class="text-red-600 mt-2 hidden">Error generating message. Please try again.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="bg-indigo-800 text-white py-16 text-center rounded-t-3xl mt-12 shadow-xl">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-6">Ready to Transform Your Synagogue?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+                ShulKit brings together the best tools to enhance your operations and community engagement. Get in touch to learn more!
+            </p>
+            <button id="openContactModalButton" class="bg-white text-indigo-800 font-bold py-3 px-8 rounded-full text-lg hover:bg-indigo-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                Contact Us
+            </button>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 ShulKit. All rights reserved.</p>
+            <p class="mt-2 text-sm">Built with <span class="text-red-500">&hearts;</span> for Synagogues.</p>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-button" id="closeContactModal">&times;</button>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Get in Touch</h2>
+            <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                <input type="hidden" name="form-name" value="contact" />
+                <p class="hidden">
+                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                </p>
+                <div>
+                    <label for="name" class="block text-gray-700 text-sm font-medium mb-1">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700 text-sm font-medium mb-1">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-700 text-sm font-medium mb-1">Message</label>
+                    <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" required></textarea>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-md hover:bg-indigo-700 transition duration-300 transform hover:scale-[1.01] shadow-md">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const openModalBtn = document.getElementById('openContactModal');
+            const openModalBtnFooter = document.getElementById('openContactModalButton');
+            const closeModalBtn = document.getElementById('closeContactModal');
+            const contactModal = document.getElementById('contactModal');
+
+            // Function to show the modal
+            function showModal() {
+                contactModal.classList.add('show');
+            }
+
+            // Function to hide the modal
+            function hideModal() {
+                contactModal.classList.remove('show');
+            }
+
+            // Event listeners to open the modal
+            if (openModalBtn) {
+                openModalBtn.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default link behavior
+                    showModal();
+                });
+            }
+            if (openModalBtnFooter) {
+                openModalBtnFooter.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default button behavior
+                    showModal();
+                });
+            }
+
+            // Event listener to close the modal when 'X' is clicked
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', hideModal);
+            }
+
+            // Event listener to close the modal when clicking outside the content
+            if (contactModal) {
+                contactModal.addEventListener('click', function(e) {
+                    if (e.target === contactModal) { // Only close if the click is directly on the overlay
+                        hideModal();
+                    }
+                });
+            }
+
+            // Gemini API Integration for Kiddush Message Ideas
+            const generateMessageBtn = document.getElementById('generateMessageBtn');
+            const occasionInput = document.getElementById('occasionInput');
+            const generatedMessageTextarea = document.getElementById('generatedMessage');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const errorIndicator = document.getElementById('errorIndicator');
+
+            if (generateMessageBtn) {
+                generateMessageBtn.addEventListener('click', async function() {
+                    const occasion = occasionInput.value.trim();
+                    if (!occasion) {
+                        generatedMessageTextarea.value = "Please enter an occasion to generate a message.";
+                        return;
+                    }
+
+                    generatedMessageTextarea.value = ''; // Clear previous message
+                    loadingIndicator.classList.remove('hidden'); // Show loading
+                    errorIndicator.classList.add('hidden'); // Hide error
+
+                    try {
+                        const apiKey = "YOUR_GEMINI_API_KEY"; // <<< REPLACE WITH YOUR ACTUAL GEMINI API KEY
+                                                           // <<< WARNING: NOT SECURE FOR PRODUCTION!
+
+                        if (apiKey === "YOUR_GEMINI_API_KEY" || apiKey === "") {
+                            generatedMessageTextarea.value = "Please replace 'YOUR_GEMINI_API_KEY' in the JavaScript with your actual Gemini API key to use this feature.";
+                            errorIndicator.classList.remove('hidden');
+                            return;
+                        }
+
+                        let chatHistory = [];
+                        const prompt = `Generate a short, heartfelt Kiddush dedication message for the occasion: "${occasion}". Keep it concise and respectful, suitable for a synagogue announcement.`;
+                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                        const payload = { contents: chatHistory };
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const text = result.candidates[0].content.parts[0].text;
+                            generatedMessageTextarea.value = text;
+                        } else {
+                            generatedMessageTextarea.value = "Could not generate message. Unexpected response from API or content filtering applied.";
+                            errorIndicator.classList.remove('hidden');
+                            console.error("Gemini API response:", result); // Log full response for debugging
+                        }
+                    } catch (error) {
+                        console.error('Error calling Gemini API:', error);
+                        generatedMessageTextarea.value = "Failed to generate message. Please check your network connection and API key.";
+                        errorIndicator.classList.remove('hidden');
+                    } finally {
+                        loadingIndicator.classList.add('hidden'); // Hide loading
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
